@@ -4,7 +4,6 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.outputColorSpace = THREE.SRGBColorSpace;
-
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000);
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -48,7 +47,7 @@ spotLight.shadow.bias = -0.0001;
 scene.add(spotLight);
 
 const loader = new GLTFLoader().setPath('public/millennium_falcon/');
-loader.load('scene.gltf', (gltf) => {
+loader.load('bed.glb', (gltf) => {
   console.log('loading model');
   const mesh = gltf.scene;
 
@@ -59,7 +58,9 @@ loader.load('scene.gltf', (gltf) => {
     }
   });
 
-  mesh.position.set(0, 1.05, -1);
+  mesh.position.set(0, 1.05, -1); // Adjust as needed
+  mesh.rotation.set(0, 0, 0); // Add if needed
+  mesh.scale.set(1.8, 1.8, 1.8); // Add if needed
   scene.add(mesh);
 
   document.getElementById('progress-container').style.display = 'none';
